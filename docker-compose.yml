@@ -59,7 +59,7 @@ services:
     ports:
       - "127.0.0.1:${HOST_MACHINE_REDIS_PORT}:6379"
   server:
-    image: hsenstech/iosserver:version2
+    image: hsenstech/iosserver:version3
     depends_on:
       - database
     links:
@@ -67,9 +67,9 @@ services:
     environment:
       MYSQL_HOST: database
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    #build:
-     # context: .
-      #dockerfile: server/Dockerfile
+    build:
+      context: .
+      dockerfile: server/Dockerfile
     #entrypoint: ["sh","cd ~", "./entrypoint.sh"]
     ports:
       - "127.0.0.1:3000:3000"
